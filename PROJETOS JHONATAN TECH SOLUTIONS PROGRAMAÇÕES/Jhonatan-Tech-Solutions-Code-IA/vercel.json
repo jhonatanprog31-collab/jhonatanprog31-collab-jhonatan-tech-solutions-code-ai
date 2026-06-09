@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "buildCommand": "pip install --target .vercel/python311 -r requirements.txt",
+  "outputDirectory": ".vercel/output",
+  "runtime": "python3.11",
+  "functions": {
+    "api": {
+      "runtime": "python3.11",
+      "handler": "backend/app/main.py",
+      "memory": 1024,
+      "maxDuration": 60
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api"
+    }
+  ],
+  "env": {
+    "PYTHONUNBUFFERED": "1"
+  }
+}

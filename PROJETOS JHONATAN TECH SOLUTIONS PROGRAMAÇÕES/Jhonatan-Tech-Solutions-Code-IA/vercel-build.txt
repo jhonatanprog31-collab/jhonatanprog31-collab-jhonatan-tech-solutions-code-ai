@@ -1,0 +1,10 @@
+[build]
+command = "pip install -r requirements.txt && mkdir -p public"
+
+[[functions]]
+path = "backend/app/main.py"
+memory = 1024
+maxDuration = 60
+
+[env]
+PYTHON_VERSION = "3.11"

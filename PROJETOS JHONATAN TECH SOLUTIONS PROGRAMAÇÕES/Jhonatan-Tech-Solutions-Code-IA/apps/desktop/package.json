@@ -1,0 +1,63 @@
+{
+  "name": "jhonatan-code-ai-desktop",
+  "version": "1.0.0",
+  "description": "JHONATAN TECH SOLUTIONS CODE AI - Desktop Application",
+  "main": "public/electron.js",
+  "homepage": "./",
+  "author": "JHONATAN TECH SOLUTIONS",
+  "scripts": {
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test",
+    "react-eject": "react-scripts eject",
+    "electron-start": "wait-on http://localhost:3000 && electron .",
+    "start": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000 && electron .\"",
+    "build": "npm run react-build && electron-builder",
+    "dist": "npm run react-build && electron-builder --publish=never"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.1.1"
+  },
+  "devDependencies": {
+    "electron": "^latest",
+    "electron-builder": "latest",
+    "concurrently": "^8.0.0",
+    "wait-on": "^7.0.0"
+  },
+  "build": {
+    "appId": "com.jhonatan.codeai",
+    "productName": "JHONATAN CODE AI",
+    "files": [
+      "build/**/*",
+      "public/electron.js"
+    ],
+    "directories": {
+      "buildResources": "public"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "JHONATAN CODE AI"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    }
+  }
+}
